@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}About Us{% endblock %}
+
+{% block content %}
+<style>
+       .footer{
+          position: fixed;
+          bottom: 0px;
+          width: 100%;
+      }
+</style>
+<div class="container  mt-5">
+   
+    <div class="row  align-items-center mt-5">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            {% include "messages.html" %} 
+            <form method="post" class="loginform" action="{% url 'loginform' %}">
+                {% csrf_token %}
+                <h2 class="mb-3">Login</h2>
+                <div class="form-floating mb-3">
+                    <input type="text" name="uname" value="" class="form-control" id="floatingUser" placeholder="phoneno">
+                    <label for="floatingUser">User Name</label>
+                  </div>
+                <div class="form-floating mb-3">
+                    <input type="password" name="password" value="" class="form-control" id="floatingPass" placeholder="phoneno">
+                    <label for="floatingPass">Password</label>
+                  </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}

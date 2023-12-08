@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}About Us{% endblock %}
+
+{% block content %}
+<style>
+    .loginform{
+        
+    }
+</style>
+<div class="container  mt-5">
+   
+    <div class="row  align-items-center mt-5">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            {% include "messages.html" %} 
+            <form method="post" class="loginform" action="{% url 'signup' %}">
+                {% csrf_token %}
+                <h2 class="mb-3">SignUp</h2>
+                <div class="form-floating mb-3">
+                    <input type="text" name="fname" value="{{formdata.fname}}" class="form-control" id="floatingFname" placeholder="phoneno">
+                    <label for="floatingFname">First Name</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="text" name="lname" value="{{formdata.lname}}" class="form-control" id="floatinglname" placeholder="phoneno">
+                    <label for="floatingLname">Last  Name</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="text" name="email" value="{{formdata.email}}" class="form-control" id="floatingEmail" placeholder="phoneno">
+                    <label for="floatingEmail">Email</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="text" name="uname"  value="{{formdata.uname}}" class="form-control" id="floatingUser" placeholder="phoneno">
+                    <label for="floatingUser">User Name</label>
+                  </div>
+                <div class="form-floating mb-3">
+                    <input type="password" name="password" value="" class="form-control" id="floatingPass" placeholder="phoneno">
+                    <label for="floatingPass">Password</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="password" name="cpassword" value="" class="form-control" id="floatingCPass" placeholder="phoneno">
+                    <label for="floatingCPass">Confirm Password</label>
+                  </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}
