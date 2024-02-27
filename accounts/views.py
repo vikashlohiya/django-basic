@@ -6,4 +6,5 @@ def login(request):
 
 
 
-    
+def myaccount(request):
+    return HttpResponse("Hi from account")    

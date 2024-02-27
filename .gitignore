@@ -1,0 +1,25 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Django-specific
+*.log
+*.pot
+*.pyc
+db.sqlite3
+__pycache__/
+media/
+
+# Static files (usually collected by Django's collectstatic)
+static/
+
+# Site-specific configurations
+*.env
+
+# Virtual environment
+venv/
+
+hotelservice/__pycache__/
+accounts/__pycache__/

@@ -17,6 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib.staticfiles.views import serve
+
+
+
+
 
 urlpatterns = [
     path('', views.home,name='home'),
@@ -27,5 +34,11 @@ urlpatterns = [
     path('contactus/', views.contact,name='contactus_form_view'),
     path('aboutus/', views.aboutus,name='aboutus'),
     path('accounts/', include('accounts.urls')),
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),  
+    path('getcontacts/', views.getContacts,name='getcontactapi'),   
+
 ]
+if not settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, view=serve)
+    
+    print(urlpatterns)

@@ -9,13 +9,24 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from .helper.utils import getMsg
 from  base.model import printMsg
+from django.conf import settings
+from django.core.serializers import serialize
+from .serializers import ContactusSerializer
+from django.http import JsonResponse
+from django.contrib.auth.decorators import permission_required
+from .decorator import custom_permission_decorator
 def home(request):
+    template_dirs = settings.TEMPLATES[0]['DIRS']
+
+    # Use the first template directory (you can modify this based on your project structure)
+    template_dir = template_dirs[0]
+    print(template_dir)
     # Render the template and return it as an HTML response
     print(settings.STATICFILES_DIRS)
    
     return render(request, 'home.html')
 
-
+#@custom_permission_decorator('hotelservice.custom_view_permission','/login')
 def aboutus(request):
     # Render the template and return it as an HTML response
     return render(request, 'aboutus.html')   
@@ -110,4 +121,13 @@ def logOutFun(request):
     logout(request)
     # Redirect to a specific URL after logout
     return redirect('home')  
+  
+
+def getContacts(request):
+    queryset = Contactus.objects.all()
+    serializer = ContactusSerializer(queryset, many=True)
+    otherData={'name':'vikash','rollno':12} 
+    return JsonResponse({'data':serializer.data,'otherData':otherData}, safe=False)
+
+    
     
